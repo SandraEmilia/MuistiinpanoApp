@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import { useState } from "react";
+import Etusivu from "./Etusivu";
+import Kurssit from "./Kurssit";
+import LisääKurssi from "./LisääKurssi";
+import LisääMuistiinpano from "./LisääMuistiinpano";
+import Muistiinpanot from "./Muistiinpanot";
+import CourseInput from "./CourseInput";
 function App() {
-  const [count, setCount] = useState(0)
+
+  let data_orig = [
+    {
+      kurssi: "Javascript",
+    },
+    {
+      kurssi: "Versionhallinta",
+    },
+    {
+      kurssi: "Fysiikka",
+    },
+  ];
+
+  const [data, setData] = useState(data_orig);
+
+  const lisääRivi = (r) =>{
+    setData([...data, r]);
+  };  
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <h1>MuistiinpanoApp</h1>
+      <Etusivu />
+      <CourseInput />
+      <LisääKurssi />
+      <h3>Kurssit:</h3>
+      {
+        data.map((d, i) => {
+          return <Kurssit data={d} key={i} />
+        })
+      }
+      <LisääMuistiinpano />
+      <Muistiinpanot />
+    </div>
+  );
 }
 
 export default App
