@@ -1,16 +1,17 @@
+import { UseKurssiStore } from "./stores/UseKurssiStore";
 
 function LisääKurssi() {
 
-   
+    const data = UseKurssiStore((state) => state.data);
+    
+    const viimeinen = data[data.length -1];
 
-    let kurssi = "Javascript";
-    let kurssi_id = 5;
     
     return (
         <div style={{border: "1px solid black"}}>
             
 
-            <p>Kurssi: "{kurssi}" lisätty id:llä {kurssi_id}</p>
+            <p>Kurssi: "{viimeinen.kurssi}" lisätty id:llä {viimeinen.kurssi_id}</p>
         </div>
     );
 }

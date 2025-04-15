@@ -1,12 +1,17 @@
 import { useState } from "react";
-import { KurssinNimi } from "./utils/LisääKurssi";
+import { kurssinNimi } from "./utils/KurssinNimi";
+import { UseKurssiStore } from "./stores/UseKurssiStore";
+
 
 function CourseInput() {
 
+    const addRow = UseKurssiStore((state) => state.addRow);
+
     const handleClick = () => {
         console.log("Painettu!");
-        let n = KurssinNimi(text);
+        let n = kurssinNimi(text);
         console.log(n);
+        addRow(n);
         setText("");
     };
 
