@@ -1,6 +1,6 @@
 const kurssinNimi = (text) => {
     const n = {
-        kurssi: text,
+        name: text,
     };
     return n;
 };

@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { kurssinNimi } from "./utils/KurssinNimi";
 import { UseKurssiStore } from "./stores/UseKurssiStore";
+import LisääMuistiinpano from "./LisääMuistiinpano";
+import LisääKurssi from "./LisääKurssi";
 
 
 function CourseInput() {
 
     const addRow = UseKurssiStore((state) => state.addRow);
+    const fetchData = UseKurssiStore((state) => state.fetchData);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+
 
     const handleClick = () => {
         console.log("Painettu!");
@@ -32,6 +41,8 @@ function CourseInput() {
             name="courseinput"
             ></textarea> <br />
             <button onClick={handleClick}>Lisää</button>
+
+            <LisääKurssi />
         </div>
     );
 }

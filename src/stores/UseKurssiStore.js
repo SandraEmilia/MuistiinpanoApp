@@ -1,31 +1,26 @@
 import { create } from "zustand";
 
-let data_orig = [
-    {
-      kurssi: "Javascript",
-      kurssi_id: 1
-    },
-    {
-      kurssi: "Versionhallinta",
-      kurssi_id: 2
-    },
-    {
-      kurssi: "Fysiikka",
-      kurssi_id: 3
-    },
-  ];
 
 const UseKurssiStore = create((set, get) => ({
-    data: data_orig,
+    data: [],
     addRow: (r) => {
         const currentData = get().data;
         const uusiId = 
             currentData.length > 0
-            ? Math.max(...currentData.map((k) => k.kurssi_id)) + 1
+            ? Math.max(...currentData.map((k) => k.id)) + 1
             : 1;
-        const uusiRivi = { ...r, kurssi_id: uusiId};
+        const uusiRivi = { ...r, id: uusiId};
         set({ data: [...currentData, uusiRivi] });
-    }
+    },
+    fetchData: async () => {
+      try {
+        const response = await fetch("https://luentomuistiinpano-api.netlify.app/.netlify/functions/courses");
+        const tiedot = await response.json();
+        set({ data: tiedot });
+      } catch (error) {
+        console.error("Virhe tietojen noudossa", error);
+      }
+    },
 
 
 }));

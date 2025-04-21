@@ -1,10 +1,46 @@
-function Muistiinpanot() {
+import { UseNoteStore } from "./stores/UseNoteStore";
+import { useEffect } from "react";
+
+
+function Muistiinpanot({ note, compact = false }) {
+
+    const fetchNote = UseNoteStore((state) => state.fetchNote);
+    const poistaRivi = UseNoteStore((state) => state.poistaRivi);
+
+    const handleCloseClick = (rivi) => {
+        console.log(rivi);
+        poistaRivi(rivi);
+    };
+
+    useEffect(() => {
+        fetchNote();
+}, []);
     return (
-        <div style={{border: "1px solid black"}}>
-            <h3>Muistiinpanot</h3>
-            <p>TÄHÄN TULEE DROPDOWN VALIKKO</p>
-            <p style={{border: "1px solid black"}}>18.3.2025 14.55 <br /> Javascript (id:5) <br/> Tulostus tapahtuu console.log komennolla. </p>
-        </div>
+        <div>
+            
+            <div style={{border: "1px solid black"}}>
+                {compact ? (
+                 <p>{note.text}</p>
+                ) : (
+                    <div>
+                        <div className="relative">
+                            <span className="absolute top-2 right-2 text-gray-500 cursor-pointer"
+                            aria-label="Poista muistiinpano"
+                            tabIndex={0}
+                            onClick={() => handleCloseClick(note)}
+                            >
+                            X
+                            </span>
+                        </div>
+                        <p style={{border: "1px solid black"}}>
+                            {note.timestamp} <br />
+                            {note.course.name} (id: {note.course.id}) <br />
+                            {note.text}
+                        </p>
+                    </div>
+                )}
+            </div>
+        </div>            
     );
 }
 
