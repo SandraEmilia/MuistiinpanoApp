@@ -7,6 +7,7 @@ import LisääKurssi from "./LisääKurssi";
 
 function CourseInput() {
 
+    //Hakee tilanhallinta storesta datan lisäys ja haku -funktiot
     const addRow = UseKurssiStore((state) => state.addRow);
     const fetchData = UseKurssiStore((state) => state.fetchData);
 
@@ -15,17 +16,18 @@ function CourseInput() {
     }, []);
 
 
-
+// Käyttäjän klikatessa "lisää" -nappia, käsitellään lisättävän kurssin nimi ja tallennetaan se listaan.
     const handleClick = () => {
-        console.log("Painettu!");
         let n = kurssinNimi(text);
         console.log(n);
         addRow(n);
         setText("");
     };
 
+    //Tilamuuttuja tekstikentälle (kurssin nimi)
     const [text, setText] = useState("");
 
+    //Käsittelee tekstikentän muutokset
     const handleChange = (e) => {
         setText(e.target.value);
     };
@@ -33,7 +35,7 @@ function CourseInput() {
 
 
     return (
-        <div className="bg-stone-300 h-70 pt-2 pb-2">
+        <div className="bg-stone-300 h-[18rem] pt-2 pb-2">
             <h3 className="text-stone-600 p-4 text-xl text-center">Lisää kurssi:</h3>
             <textarea
             className="border border-stone-600 rounded-md p-2 w-1/2 block mx-auto mb-4 resize-none focus:outline-none focus:ring-2 focus:ring-stone-600 mb-0"

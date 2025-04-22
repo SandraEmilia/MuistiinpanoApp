@@ -36,6 +36,9 @@
 .flex {
   display: flex;
 }
+.h-\[18rem\] {
+  height: 18rem;
+}
 .h-full {
   height: 100%;
 }

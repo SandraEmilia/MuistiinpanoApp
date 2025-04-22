@@ -1,15 +1,20 @@
 import { UseKurssiStore } from "./stores/UseKurssiStore";
 import { useEffect } from "react";
 
+
+
 function LisääKurssi() {
 
     const data = UseKurssiStore((state) => state.data);
     const fetchData = UseKurssiStore((state) => state.fetchData);
 
+
+    //UseEffect -hookin avulla suoritetaan fetchdata() -funktio, joka hakee datan API:sta 
     useEffect(() => {
             fetchData();
-    }, []);
+    }, []); //Lista on tyhjä, joten haku suoritetaan vain kerran ensimmäisen renderöinnin jälkeen. 
 
+//Jos datan haku API:sta kestää, tulostuu teksti "ladataan kurssitietoja..."
     if (data.length === 0) {
         return <p className="text-center text-stone-600">Ladataan kurssitietoja...</p>;
     }

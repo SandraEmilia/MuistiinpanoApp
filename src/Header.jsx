@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+
+//Header-komponentti ja navigointilinkit
 function Header() {
     return (
         <div className="w-full">

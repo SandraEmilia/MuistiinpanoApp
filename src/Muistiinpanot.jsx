@@ -4,14 +4,16 @@ import { useEffect } from "react";
 
 function Muistiinpanot({ note, compact = false }) {
 
+    //Hakee funktiot tilanhallinta storesta
     const fetchNote = UseNoteStore((state) => state.fetchNote);
     const poistaRivi = UseNoteStore((state) => state.poistaRivi);
 
+    //Muistiinpano poistetaan käyttäjän klikatessa
     const handleCloseClick = (rivi) => {
-        console.log(rivi);
         poistaRivi(rivi);
     };
 
+    //Hakee muistiinpanot, kun komponentti latautuu
     useEffect(() => {
         fetchNote();
 }, []);

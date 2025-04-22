@@ -1,3 +1,6 @@
+
+
+// Luo uuden muistiinpano-olion, johon lisätään teksti, aikaleima ja kurssitiedot
 const Muistiinpano = (teksti, kurssi,) => {
 
   const aikaLeima = new Date().toLocaleString("fi-FI", {
