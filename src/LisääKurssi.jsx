@@ -11,7 +11,7 @@ function LisääKurssi() {
     }, []);
 
     if (data.length === 0) {
-        return <p>Ladataan kurssitietoja...</p>;
+        return <p className="text-center text-stone-600">Ladataan kurssitietoja...</p>;
     }
 
     
@@ -19,7 +19,7 @@ function LisääKurssi() {
 
     
     return (
-        <div style={{border: "1px solid black"}}>
+        <div className="border-t-4 text-stone-600 text-center py-4">
             
 
             <p>Kurssi: "{viimeinen.name}" lisätty id:llä {viimeinen.id}</p>

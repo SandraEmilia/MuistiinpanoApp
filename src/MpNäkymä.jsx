@@ -26,9 +26,10 @@ function MpNäkymä () {
     : note.filter((n) => n.course.id === optionPicked.id);
     
     return (
-        <div>
-            <h3>Muistiinpanot</h3>
+        <div className="bg-stone-300 h-70 pt-2 pb-2">
+            <h3 className="text-stone-600 p-4 text-xl text-center">Muistiinpanot</h3>
             <Select
+            className="p-2 w-1/2 block mx-auto mb-2 resize-none focus:outline-none focus:ring-2 focus:ring-stone-600"
             placeholder= "Valitse kurssi..."
             options={valikko}
             getOptionLabel={(d) => d.name}
@@ -37,10 +38,14 @@ function MpNäkymä () {
             value={optionPicked} />
 
             <div>
-                {
+                {näkyvät.length === 0 ? (
+                    <p className="text-center text-stone-600">Ei muistiinpanoja</p>
+                ) : (
                     näkyvät.map((n,i) => (
                         <Muistiinpanot note={n} key={i} />
-                    ))}
+                    ))
+                    )
+                }
             </div>
         </div>
 

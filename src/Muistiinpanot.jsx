@@ -15,16 +15,18 @@ function Muistiinpanot({ note, compact = false }) {
     useEffect(() => {
         fetchNote();
 }, []);
+
+    
     return (
         <div>
             
-            <div style={{border: "1px solid black"}}>
+            <div>
                 {compact ? (
-                 <p>{note.text}</p>
+                 <p className="border border-2 border-stone-600 p-2 w-1/2 mx-auto my-4 ">{note.text}</p>
                 ) : (
-                    <div>
+                    <div className="border border-2 border-stone-600 p-2 w-1/2 mx-auto my-4 ">
                         <div className="relative">
-                            <span className="absolute top-2 right-2 text-gray-500 cursor-pointer"
+                            <span className="absolute top-2 right-2 text-stone-900 cursor-pointer border border-1 border-stone-600 px-1 py-0 bg-stone-200 text-xs"
                             aria-label="Poista muistiinpano"
                             tabIndex={0}
                             onClick={() => handleCloseClick(note)}
@@ -32,7 +34,7 @@ function Muistiinpanot({ note, compact = false }) {
                             X
                             </span>
                         </div>
-                        <p style={{border: "1px solid black"}}>
+                        <p className="text-stone-600">
                             {note.timestamp} <br />
                             {note.course.name} (id: {note.course.id}) <br />
                             {note.text}

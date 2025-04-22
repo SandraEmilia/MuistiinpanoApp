@@ -19,7 +19,7 @@ function MuistiinpanoListaus({ compact = false, selectedCourseId = null }) {
     : [];
 
     return (
-        <div>
+        <div className="border-t-4 text-stone-600 text-center py-4">
             {näkyvät.map((n, i) => (
                 <Muistiinpanot note={n} key={i} compact={compact} />
                 

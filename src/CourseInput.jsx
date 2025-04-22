@@ -33,14 +33,17 @@ function CourseInput() {
 
 
     return (
-        <div style={{border: "1px solid black"}}>
-            <h3>Lisää kurssi:</h3>
+        <div className="bg-stone-300 h-70 pt-2 pb-2">
+            <h3 className="text-stone-600 p-4 text-xl text-center">Lisää kurssi:</h3>
             <textarea
+            className="border border-stone-600 rounded-md p-2 w-1/2 block mx-auto mb-4 resize-none focus:outline-none focus:ring-2 focus:ring-stone-600 mb-0"
             onChange={(e) => handleChange(e)}
             value={text}
             name="courseinput"
             ></textarea> <br />
-            <button onClick={handleClick}>Lisää</button>
+            <button
+            className="border-2 border-stone-600 px-4 py-2  text-stone-600 rounded-md mx-auto block hover:bg-stone-600 hover:text-white transition mb-4"
+            onClick={handleClick}>Lisää</button>
 
             <LisääKurssi />
         </div>
