@@ -13,7 +13,7 @@ Käyttöohjeet:
 Voit kloonata repositoryn:
 - Avaa terminaali ja siirry kansioon, johon haluat kloonata koodin
 - suorita kloonaus: git clone https://github.com/SandraEmilia/MuistiinpanoApp.git
-- siirry kloonattuun kansioon: cd muistiinpanoapp
+- siirry kloonattuun kansioon: cd MuistiinpanoApp
 
 - Asenna riippuvuudet: npm install
 - Käynnistä sovellus: npm run dev
